@@ -3,7 +3,8 @@ import { createContact, updateContact } from "../mockServer/contacts";
 
 export async function createContactAction() {
     const contact = await createContact();
-    return { contact };
+    return redirect(`/contacts/${contact.id}/edit`);
+    // return { contact };
 }
 
 export async function updateContactAction({ request, params }) {
