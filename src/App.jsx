@@ -1,7 +1,8 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import { createContactaction } from "./actions/actions";
+import { createContactAction, updateContactAction } from "./actions/actions";
 import "./App.css";
 import Contact from "./components/Contact";
+import EditContact from "./components/EditContact";
 import ErrorPage from "./components/ErrorPage";
 import Root from "./components/Root";
 import { contactLoader, contactsLoader } from "./loaders/loaders";
@@ -13,12 +14,18 @@ function App() {
       element: <Root />,
       errorElement: <ErrorPage />,
       loader: contactsLoader,
-      action: createContactaction,
+      action: createContactAction,
       children: [
         {
           path: "contacts/:contactId",
           element: <Contact />,
           loader: contactLoader,
+        },
+        {
+          path: "contacts/:contactId/edit",
+          element: <EditContact />,
+          loader: contactLoader,
+          action: updateContactAction,
         },
       ],
     },
