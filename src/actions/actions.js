@@ -1,5 +1,5 @@
 import { redirect } from 'react-router-dom';
-import { createContact, updateContact } from "../mockServer/contacts";
+import { createContact, deleteContact, updateContact } from "../mockServer/contacts";
 
 export async function createContactAction() {
     const contact = await createContact();
@@ -12,4 +12,10 @@ export async function updateContactAction({ request, params }) {
     const updates = Object.fromEntries(formData);
     await updateContact(params.contactId, updates);
     return redirect(`/contacts/${params.contactId}`);
+}
+
+export async function deleteContactAction({ params }) {
+    const contactId = params.contactId;
+    await deleteContact(contactId);
+    return redirect(`/`);
 }

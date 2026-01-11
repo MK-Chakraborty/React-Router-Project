@@ -1,5 +1,9 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import { createContactAction, updateContactAction } from "./actions/actions";
+import {
+  createContactAction,
+  deleteContactAction,
+  updateContactAction,
+} from "./actions/actions";
 import "./App.css";
 import Contact from "./components/Contact";
 import EditContact from "./components/EditContact";
@@ -26,6 +30,11 @@ function App() {
           element: <EditContact />,
           loader: contactLoader,
           action: updateContactAction,
+        },
+        {
+          path: "contacts/:contactId/destroy",
+          action: deleteContactAction,
+          errorElement: <ErrorPage />,
         },
       ],
     },
