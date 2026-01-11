@@ -8,6 +8,7 @@ import "./App.css";
 import Contact from "./components/Contact";
 import EditContact from "./components/EditContact";
 import ErrorPage from "./components/ErrorPage";
+import Index from "./components/Index";
 import Root from "./components/Root";
 import { contactLoader, contactsLoader } from "./loaders/loaders";
 
@@ -20,6 +21,10 @@ function App() {
       loader: contactsLoader,
       action: createContactAction,
       children: [
+        {
+          index: true,
+          element: <Index />,
+        },
         {
           path: "contacts/:contactId",
           element: <Contact />,
