@@ -19,3 +19,10 @@ export async function deleteContactAction({ params }) {
     await deleteContact(contactId);
     return redirect(`/`);
 }
+
+export async function toggleFavouriteContactAction({ request, params }) {
+    const formData = await request.formData();
+    return updateContact(params.contactId, {
+        favorite: formData.get("favorite") === "true",
+    })
+}

@@ -2,6 +2,7 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import {
   createContactAction,
   deleteContactAction,
+  toggleFavouriteContactAction,
   updateContactAction,
 } from "./actions/actions";
 import "./App.css";
@@ -29,6 +30,7 @@ function App() {
           path: "contacts/:contactId",
           element: <Contact />,
           loader: contactLoader,
+          action: toggleFavouriteContactAction,
         },
         {
           path: "contacts/:contactId/edit",
