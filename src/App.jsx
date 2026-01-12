@@ -23,25 +23,30 @@ function App() {
       action: createContactAction,
       children: [
         {
-          index: true,
-          element: <Index />,
-        },
-        {
-          path: "contacts/:contactId",
-          element: <Contact />,
-          loader: contactLoader,
-          action: toggleFavouriteContactAction,
-        },
-        {
-          path: "contacts/:contactId/edit",
-          element: <EditContact />,
-          loader: contactLoader,
-          action: updateContactAction,
-        },
-        {
-          path: "contacts/:contactId/destroy",
-          action: deleteContactAction,
           errorElement: <ErrorPage />,
+          children: [
+            {
+              index: true,
+              element: <Index />,
+            },
+            {
+              path: "contacts/:contactId",
+              element: <Contact />,
+              loader: contactLoader,
+              action: toggleFavouriteContactAction,
+            },
+            {
+              path: "contacts/:contactId/edit",
+              element: <EditContact />,
+              loader: contactLoader,
+              action: updateContactAction,
+            },
+            {
+              path: "contacts/:contactId/destroy",
+              action: deleteContactAction,
+              errorElement: <ErrorPage />,
+            },
+          ],
         },
       ],
     },
